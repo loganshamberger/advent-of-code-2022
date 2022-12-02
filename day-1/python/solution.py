@@ -1,6 +1,4 @@
-import heapq
-
-def make_heap():
+def make_list():
     lines = read_file()
     elves= []
     current_elf = 0
@@ -11,7 +9,7 @@ def make_heap():
             current_elf = 0
         else:
             current_elf = current_elf + int(line)
-    heapq.heapify(elves)
+    elves.sort(reverse=True)
     return elves
 
 def read_file():
@@ -20,9 +18,9 @@ def read_file():
     return lines
 
 def main():
-    elves = make_heap()
-    print("Solution to part one: " +str(heapq.nlargest(1,elves).pop()))
-    print("Solution to part 2: "+ str(sum(heapq.nlargest(3,elves))))
+    elves = make_list()
+    print("Solution to part one: " +str(elves[0]))
+    print("Solution to part 2: "+ str(sum(elves[:3])))
 
 if __name__ == "__main__":
     main()
